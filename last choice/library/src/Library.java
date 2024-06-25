@@ -39,11 +39,11 @@ public class Library {
         // For demonstration purposes, we'll add some dummy data here
 
         // Adding books
-        addBook(new Book("The Hobbit", "J.R.R. Tolkien", "Fantasy"));
-        addBook(new Book("1984", "George Orwell", "Fiction"));
-        addBook(new Book("A Brief History of Time", "Stephen Hawking", "Science"));
-        addBook(new Book("Sapiens", "Yuval Noah Harari", "History"));
-        addBook(new Book("Educated", "Tara Westover", "Non-fiction"));
+        addBook(new Book("The Hobbit", "J.R.R. Tolkien", "Fantasy", new ArrayList<>()));
+        addBook(new Book("1984", "George Orwell", "Fiction", new ArrayList<>()));
+        addBook(new Book("A Brief History of Time", "Stephen Hawking", "Science", new ArrayList<>()));
+        addBook(new Book("Sapiens", "Yuval Noah Harari", "History", new ArrayList<>()));
+        addBook(new Book("Educated", "Tara Westover", "Non-fiction", new ArrayList<>()));
 
         // Creating admin
         admin = new Admin("admin", "password123");

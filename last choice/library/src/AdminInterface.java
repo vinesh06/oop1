@@ -44,7 +44,7 @@ public class AdminInterface {
         String author = JOptionPane.showInputDialog("Enter book author:");
         if (author == null) return; // Handle cancel
 
-        Book book = new Book(title, author, genre);
+        Book book = new Book(title, author, genre, rating = new ArrayList<>());
         library.addBook(book);
         JOptionPane.showMessageDialog(null, "Book added successfully!");
     }
@@ -71,7 +71,7 @@ public class AdminInterface {
             String author = JOptionPane.showInputDialog("Enter new book author:");
             if (author == null) return; // Handle cancel
 
-            Book book = new Book(title, author, genre);
+            Book book = new Book(title, author, rating = new ArrayList<>();
             library.updateBook(index, book);
             JOptionPane.showMessageDialog(null, "Book updated successfully!");
         } catch (Exception e) {
