@@ -120,27 +120,29 @@ public class AdminInterface {
         }
     }
     private void viewBookReviews() {
-    StringBuilder reviewsInfo = new StringBuilder();
-    boolean hasReviews = false;
-
-    for (Book book : library.getBooks()) {
-        List<Review> reviews = book.getReviews();
-        if (!reviews.isEmpty()) {
-            reviewsInfo.append("Book: ").append(book.getTitle()).append("\n");
-            for (Review review : reviews) {
-                reviewsInfo.append("Reviewer: ").append(review.getReviewer()).append("\n")
-                           .append("Rating: ").append(review.getRating()).append("\n")
-                           .append("Comment: ").append(review.getComment()).append("\n")
-                           .append("------------------------------\n");
+        StringBuilder reviewsInfo = new StringBuilder();
+        boolean hasReviews = false;
+    
+        for (Book book : library.getBooks()) {
+            List<Review> reviews = book.getReviews();
+            if (!reviews.isEmpty()) {
+                reviewsInfo.append("Category: ").append(book.getGenre()).append("\n")
+                           .append("Book: ").append(book.getTitle()).append("\n");
+                for (Review review : reviews) {
+                    reviewsInfo.append("Reviewer: ").append(review.getReviewer()).append("\n")
+                               .append("Rating: ").append(review.getRating()).append("\n")
+                               .append("Comment: ").append(review.getComment()).append("\n")
+                               .append("------------------------------\n");
+                }
+                hasReviews = true;
             }
-            hasReviews = true;
+        }
+    
+        if (!hasReviews) {
+            JOptionPane.showMessageDialog(null, "No reviews available.");
+        } else {
+            JOptionPane.showMessageDialog(null, reviewsInfo.toString());
         }
     }
+}
 
-    if (!hasReviews) {
-        JOptionPane.showMessageDialog(null, "No reviews available.");
-    } else {
-        JOptionPane.showMessageDialog(null, reviewsInfo.toString());
-    }
-}
-}
