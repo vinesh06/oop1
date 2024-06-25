@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.swing.*;
 
 public class AdminInterface {
@@ -10,10 +13,10 @@ public class AdminInterface {
 
     public void start() {
         while (true) {
-            String[] options = {"Add Book", "Update Book", "Delete Book", "View Borrowed Books", "Logout"};
+            String[] options = {"Add Book", "Update Book", "Delete Book", "View Borrowed Books","View Reviews", "Logout"};
             int choice = JOptionPane.showOptionDialog(null, "Admin Panel", "Admin Interface",
                     JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
-            if (choice == JOptionPane.CLOSED_OPTION || choice == 4) {
+            if (choice == JOptionPane.CLOSED_OPTION || choice == 5) {
                 break;
             }
             switch (choice) {
@@ -28,6 +31,9 @@ public class AdminInterface {
                     break;
                 case 3:
                     viewBorrowedBooks();
+                    break;
+                case 4:
+                    viewBookReviews();
                     break;
             }
         }
@@ -113,4 +119,28 @@ public class AdminInterface {
             JOptionPane.showMessageDialog(null, borrowedBooksInfo.toString());
         }
     }
+    private void viewBookReviews() {
+    StringBuilder reviewsInfo = new StringBuilder();
+    boolean hasReviews = false;
+
+    for (Book book : library.getBooks()) {
+        List<Review> reviews = book.getReviews();
+        if (!reviews.isEmpty()) {
+            reviewsInfo.append("Book: ").append(book.getTitle()).append("\n");
+            for (Review review : reviews) {
+                reviewsInfo.append("Reviewer: ").append(review.getReviewer()).append("\n")
+                           .append("Rating: ").append(review.getRating()).append("\n")
+                           .append("Comment: ").append(review.getComment()).append("\n")
+                           .append("------------------------------\n");
+            }
+            hasReviews = true;
+        }
+    }
+
+    if (!hasReviews) {
+        JOptionPane.showMessageDialog(null, "No reviews available.");
+    } else {
+        JOptionPane.showMessageDialog(null, reviewsInfo.toString());
+    }
+}
 }
