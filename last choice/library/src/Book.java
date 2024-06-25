@@ -5,13 +5,12 @@ public class Book {
     private String title;
     private String author;
     private String genre;
-    private List<Review> reviews ;
+    
 
-    public Book(String title, String author, String genre, List<Review> reviews) {
+    public Book(String title, String author, String genre) {
         this.title = title;
         this.author = author;
         this.genre = genre;
-        this.reviews = new ArrayList<>();
     }
 
     public String getTitle() {
@@ -30,12 +29,8 @@ public class Book {
     public String toString() {
         return title + " by " + author + " (" + genre + ")";
     }
+  
 
-    public List<Review> getReviews() {
-        return reviews;
-    }
 
-    public void addReview(Review review) {
-        reviews.add(review);
-    }
+    
 }

@@ -147,8 +147,9 @@ public class MemberInterface {
             }
         }
     
-        Review review = new Review(reviewer, comment, rating);
-        selectedBook.addReview(review);
+        Review review = new Review(reviewer, comment, rating, new ArrayList<>());
+        review.addReview(review);
+        //selectedBook.addReview(review);
         JOptionPane.showMessageDialog(null, "Thank you for your review!");
     }
 }

@@ -50,7 +50,7 @@ public class AdminInterface {
         String author = JOptionPane.showInputDialog("Enter book author:");
         if (author == null) return; // Handle cancel
 
-        Book book = new Book(title, author, genre, rating = new ArrayList<>());
+        Book book = new Book(title, author, genre);
         library.addBook(book);
         JOptionPane.showMessageDialog(null, "Book added successfully!");
     }
@@ -77,7 +77,7 @@ public class AdminInterface {
             String author = JOptionPane.showInputDialog("Enter new book author:");
             if (author == null) return; // Handle cancel
 
-            Book book = new Book(title, author, rating = new ArrayList<>();
+            Book book = new Book(title, author, genre);
             library.updateBook(index, book);
             JOptionPane.showMessageDialog(null, "Book updated successfully!");
         } catch (Exception e) {
@@ -119,27 +119,28 @@ public class AdminInterface {
             JOptionPane.showMessageDialog(null, borrowedBooksInfo.toString());
         }
     }
+    
     private void viewBookReviews() {
         StringBuilder reviewsInfo = new StringBuilder();
         boolean hasReviews = false;
-    
-        for (Book book : library.getBooks()) {
-            List<Review> reviews = book.getReviews();
+        
+        for (Book book : library.getBooks()) { // Use getAvailableBooks() if that's the correct method
+            List<Review> reviews = book.getReviews(); // Use the method getReviews() from Book class
             if (!reviews.isEmpty()) {
                 reviewsInfo.append("Category: ").append(book.getGenre()).append("\n")
-                           .append("Book: ").append(book.getTitle()).append("\n");
+                           .append("Book: ").append(book.getTitle()).append("\n")
+                           .append("Reviews:\n");
                 for (Review review : reviews) {
                     reviewsInfo.append("Reviewer: ").append(review.getReviewer()).append("\n")
                                .append("Rating: ").append(review.getRating()).append("\n")
-                               .append("Comment: ").append(review.getComment()).append("\n")
-                               .append("------------------------------\n");
+                               .append("Comment: ").append(review.getComment()).append("\n\n");
                 }
                 hasReviews = true;
             }
         }
-    
+        
         if (!hasReviews) {
-            JOptionPane.showMessageDialog(null, "No reviews available.");
+            JOptionPane.showMessageDialog(null, "No reviews found.");
         } else {
             JOptionPane.showMessageDialog(null, reviewsInfo.toString());
         }
