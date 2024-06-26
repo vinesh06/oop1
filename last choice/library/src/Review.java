@@ -25,21 +25,7 @@ public class Review {
     public int getRating() {
         return rating;
     }
-    public void setRating(int rating) {
-        this.rating = rating;
-    }
-
-    public void setComment(String comment) {
-        this.comment = comment;
-    }
-
-    public void setReviewer(String reviewer) {
-        this.reviewer = reviewer;
-    }
-
-    public void setReviews(List<Review> reviews) {
-        this.reviews = reviews;
-    }
+     
 
     public void addReviews(Review review) {
         reviews.add(review);

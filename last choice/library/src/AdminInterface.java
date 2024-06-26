@@ -120,14 +120,12 @@ public class AdminInterface {
         }
     }
     
-    private void viewBookReviews() {
+    public void viewBookReviews() {
         StringBuilder reviewsInfo = new StringBuilder();
         boolean hasReviews = false;
-        
-        for (Book book : library.getBooks()) { // Use getAvailableBooks() if that's the correct method
-        //use the method getReviews () from review class
-      
-        List<Review> reviews = book.getReviews(); // Use the method getReviews() from Book class
+
+        for (Book book : library.getBooks()) {
+            List<Review> reviews = book.getReviews();
             if (!reviews.isEmpty()) {
                 reviewsInfo.append("Category: ").append(book.getGenre()).append("\n")
                            .append("Book: ").append(book.getTitle()).append("\n")
@@ -140,7 +138,7 @@ public class AdminInterface {
                 hasReviews = true;
             }
         }
-        
+
         if (!hasReviews) {
             JOptionPane.showMessageDialog(null, "No reviews found.");
         } else {
