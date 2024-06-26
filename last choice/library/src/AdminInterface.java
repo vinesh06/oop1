@@ -125,7 +125,9 @@ public class AdminInterface {
         boolean hasReviews = false;
         
         for (Book book : library.getBooks()) { // Use getAvailableBooks() if that's the correct method
-            List<Review> reviews = book.getReviews(); // Use the method getReviews() from Book class
+        //use the method getReviews () from review class
+      
+        List<Review> reviews = book.getReviews(); // Use the method getReviews() from Book class
             if (!reviews.isEmpty()) {
                 reviewsInfo.append("Category: ").append(book.getGenre()).append("\n")
                            .append("Book: ").append(book.getTitle()).append("\n")
